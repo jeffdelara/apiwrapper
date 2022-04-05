@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'payment#index'
+  post 'pay', to: 'payment#pay'
+  post 'capture', to: 'payment#capture'
+  get 'error', to: 'payment#error'
+  get 'success', to: 'payment#success'
+
 end

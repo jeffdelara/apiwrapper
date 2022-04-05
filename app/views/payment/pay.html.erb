@@ -1,0 +1,31 @@
+<div class='container'>
+  <h1 class='text-center'>Payment details</h1>
+  <%= form_with url: capture_path do |f| %>
+    <%= f.hidden_field :payment_intent_id, value: @payment_intent['data']['id'] %>
+    <%= f.hidden_field :client_key, value: @payment_intent['data']['attributes']['client_key'] %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :required => true %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :required => true %>
+    <%= f.label :card_number %>
+    <%= f.text_field :card_number, :required => true %>
+    <div class='column'>
+      <div class='form-group'>
+        <%= f.label :exp_month %>
+        <%= f.text_field :exp_month, :required => true %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :exp_year %>
+        <%= f.text_field :exp_year, :required => true %>
+      </div>
+      <div>
+        <%= f.label :cvc %>
+        <%= f.text_field :cvc, :required => true %>
+      </div>
+    </div>
+    <%= f.submit 'Donate' %>
+  <% end %>
+  <div class='text-center pt-3'>
+    <%= image_tag 'credit-card-logos.png', :class => 'credit-card' %>
+  </div>
+</div>
